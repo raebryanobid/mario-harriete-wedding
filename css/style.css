@@ -1,0 +1,2549 @@
+/* =========================================================
+   MARIO & HARRIETE
+   WEDDING INVITATION
+========================================================= */
+
+:root {
+    --cream: #f6ecda;
+    --cream-2: #ead8bc;
+
+    --ink: #5a3422;
+    --muted: #846a56;
+
+    --bronze: #925936;
+    --olive: #67684e;
+
+    --shadow: rgba(57, 37, 24, 0.22);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    overflow-x: hidden;
+
+    background: #d9c5a8;
+
+    color: var(--ink);
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+}
+
+body.is-locked {
+    height: 100vh;
+    overflow: hidden;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+}
+
+.svg-defs {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   OPENING
+========================================================= */
+
+.opening {
+    position: fixed;
+    z-index: 1000;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 43%,
+            rgba(255, 250, 238, 0.94),
+            rgba(225, 204, 175, 0.48) 43%,
+            rgba(191, 163, 128, 0.54)
+        ),
+        linear-gradient(
+            135deg,
+            #e9dcc8,
+            #d3b994
+        );
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+
+/* subtle paper grain */
+
+.opening::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.18;
+
+    background-image:
+        radial-gradient(
+            circle at 20% 30%,
+            #ffffff 0 1px,
+            transparent 2px
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            #8d6a48 0 0.6px,
+            transparent 1.4px
+        );
+
+    background-size:
+        13px 17px,
+        19px 23px;
+}
+
+
+/* =========================================================
+   OPENING FLORALS
+========================================================= */
+
+.opening-bg-floral {
+    position: absolute;
+    z-index: 1;
+
+    width: min(440px, 62vw);
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 10px 18px
+            rgba(69, 48, 29, 0.10)
+        );
+
+    opacity: 0.78;
+}
+
+.opening-bg-floral svg {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    overflow: visible;
+}
+
+.opening-bg-floral--tl {
+    left: -105px;
+    top: -105px;
+
+    transform-origin:
+        38% 38%;
+
+    animation:
+        openingPlantLeft
+        8s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+.opening-bg-floral--br {
+    right: -110px;
+    bottom: -115px;
+
+    transform-origin:
+        60% 60%;
+
+    animation:
+        openingPlantRight
+        9s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+
+@keyframes openingPlantLeft {
+
+    from {
+        transform:
+            rotate(-3deg)
+            translate3d(0, 0, 0);
+    }
+
+    to {
+        transform:
+            rotate(2deg)
+            translate3d(8px, 9px, 0);
+    }
+
+}
+
+
+@keyframes openingPlantRight {
+
+    from {
+        transform:
+            rotate(177deg)
+            translate3d(0, 0, 0);
+    }
+
+    to {
+        transform:
+            rotate(182deg)
+            translate3d(8px, -8px, 0);
+    }
+
+}
+
+
+/* =========================================================
+   OPENING TITLE
+========================================================= */
+
+.opening-heading {
+    position: absolute;
+    z-index: 3;
+
+    top: 7vh;
+    left: 50%;
+
+    width: 100%;
+
+    text-align: center;
+
+    transform:
+        translateX(-50%);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.opening-heading p {
+    margin: 0;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size:
+        clamp(
+            16px,
+            2vw,
+            21px
+        );
+
+    font-weight: 500;
+
+    letter-spacing: 0.48em;
+}
+
+.opening-heading span {
+    display: block;
+
+    width: 130px;
+    height: 1px;
+
+    margin:
+        18px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #98633f,
+            transparent
+        );
+}
+
+.opening-heading h1 {
+    margin: 0;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size:
+        clamp(
+            22px,
+            3vw,
+            32px
+        );
+
+    font-weight: 400;
+
+    letter-spacing: 0.28em;
+}
+
+
+/* =========================================================
+   ENVELOPE STAGE
+========================================================= */
+
+.envelope-scene {
+    position: absolute;
+    z-index: 5;
+
+    left: 50%;
+    top: 58%;
+
+    width:
+        min(
+            650px,
+            86vw
+        );
+
+    height:
+        min(
+            430px,
+            54vh
+        );
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    perspective: 1400px;
+}
+
+
+/* gentle idle movement */
+
+.opening:not(.is-opening)
+.envelope-scene {
+    animation:
+        envelopeFloat
+        4.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes envelopeFloat {
+
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -7px;
+    }
+
+}
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+.envelope {
+    position: absolute;
+    z-index: 5;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 82%;
+
+    cursor: pointer;
+
+    transform-style:
+        preserve-3d;
+
+    filter:
+        drop-shadow(
+            0 24px 25px
+            rgba(66, 42, 25, 0.24)
+        );
+
+    transition:
+        filter 0.25s ease,
+        transform 0.25s ease;
+}
+
+.envelope:hover {
+    filter:
+        drop-shadow(
+            0 30px 32px
+            rgba(66, 42, 25, 0.28)
+        );
+}
+
+.env-back {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e6d4b9,
+            #cfb38d
+        );
+}
+
+
+/* =========================================================
+   ENVELOPE FLAP
+========================================================= */
+
+.env-flap {
+    position: absolute;
+    z-index: 8;
+
+    inset:
+        0
+        0
+        32%;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 100%,
+            100% 0
+        );
+
+    background:
+        linear-gradient(
+            155deg,
+            #f0e2cc,
+            #d6bb95
+        );
+
+    transform-origin:
+        50% 0;
+
+    backface-visibility:
+        hidden;
+}
+
+
+/* =========================================================
+   ENVELOPE FRONT
+========================================================= */
+
+.env-front {
+    position: absolute;
+    z-index: 7;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    border-radius: 4px;
+}
+
+.env-fold {
+    position: absolute;
+
+    inset: 0;
+}
+
+.env-fold--left {
+    clip-path:
+        polygon(
+            0 0,
+            53% 57%,
+            0 100%
+        );
+
+    background:
+        #e2ceb0;
+}
+
+.env-fold--right {
+    clip-path:
+        polygon(
+            100% 0,
+            47% 57%,
+            100% 100%
+        );
+
+    background:
+        #d9c19f;
+}
+
+.env-fold--bottom {
+    clip-path:
+        polygon(
+            0 100%,
+            50% 54%,
+            100% 100%
+        );
+
+    background:
+        linear-gradient(
+            #e7d4b8,
+            #d8bd98
+        );
+}
+
+
+/* =========================================================
+   WAX SEAL
+========================================================= */
+
+.wax-seal {
+    position: absolute;
+    z-index: 10;
+
+    left: 50%;
+    top: 48%;
+
+    width: 94px;
+
+    aspect-ratio: 1;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #c18b5f,
+            #925936 55%,
+            #65391f
+        );
+
+    color:
+        #d9aa7f;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    box-shadow:
+        0 8px 16px
+        rgba(107, 67, 44, 0.34),
+        inset 0 0 0 4px
+        rgba(93, 52, 31, 0.20);
+
+    cursor: pointer;
+
+    animation:
+        sealBreath
+        2.4s
+        ease-in-out
+        infinite;
+}
+
+.wax-seal::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border:
+        1px solid
+        rgba(224, 181, 138, 0.40);
+
+    border-radius: 50%;
+}
+
+.wax-seal svg {
+    width: 62%;
+    height: 62%;
+}
+
+
+@keyframes sealBreath {
+
+    50% {
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(1.045);
+    }
+
+}
+
+
+/* =========================================================
+   OPEN LABEL
+========================================================= */
+
+.open-label {
+    position: absolute;
+    z-index: 10;
+
+    left: 50%;
+    bottom: 4vh;
+
+    border: 0;
+
+    background:
+        transparent;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 0.24em;
+
+    white-space: nowrap;
+
+    transform:
+        translateX(-50%);
+
+    cursor: pointer;
+}
+
+.open-label::before {
+    content: "";
+
+    display: block;
+
+    width: 1px;
+    height: 28px;
+
+    margin:
+        0 auto 15px;
+
+    background:
+        #946344;
+}
+
+
+/* =========================================================
+   OPENING STATES
+========================================================= */
+
+.opening.is-opening
+.opening-heading,
+
+.opening.is-opening
+.open-label {
+    opacity: 0;
+
+    transform:
+        translate(
+            -50%,
+            -18px
+        );
+}
+
+.opening.is-complete {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN INVITATION
+========================================================= */
+
+.invitation {
+    display: none;
+
+    padding:
+        12px 8px 70px;
+
+    background:
+        linear-gradient(
+            #d7c2a3,
+            #cbb08a
+        );
+}
+
+.invitation.is-visible {
+    display: block;
+}
+
+
+/* =========================================================
+   PAPER
+========================================================= */
+
+.paper {
+    position: relative;
+
+    width:
+        min(
+            690px,
+            100%
+        );
+
+    margin: auto;
+
+    overflow: hidden;
+
+    background:
+        #f7edda;
+
+    box-shadow:
+        0 20px 60px
+        rgba(76, 52, 37, 0.29);
+}
+
+
+/* subtle texture */
+
+.paper-grain {
+    position: absolute;
+    z-index: 1;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.18;
+
+    background-image:
+        radial-gradient(
+            circle at 30% 20%,
+            #8f7357 0 0.45px,
+            transparent 0.8px
+        ),
+        radial-gradient(
+            circle at 70% 80%,
+            #ffffff 0 0.7px,
+            transparent 1.1px
+        );
+
+    background-size:
+        11px 13px,
+        17px 19px;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        105px 62px;
+
+    text-align: center;
+
+    /*
+        Important:
+        Section no longer clips the floral artwork.
+        The main .paper handles the outside boundary.
+    */
+    overflow: visible;
+}
+
+.hero-section {
+    padding-top: 120px;
+}
+
+
+/* =========================================================
+   BOTANICAL ART
+========================================================= */
+
+.floral {
+    position: absolute;
+    z-index: 0;
+
+    width: 275px;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    opacity: 0.84;
+
+    transform-origin:
+        center;
+
+    filter:
+        drop-shadow(
+            0 8px 12px
+            rgba(66, 45, 29, 0.08)
+        );
+
+    will-change:
+        transform;
+}
+
+
+/*
+   These remain INSIDE the section.
+   No more square / straight crop.
+*/
+
+.floral--tl {
+    left: -48px;
+    top: -55px;
+
+    animation:
+        floralTL
+        8s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+.floral--tr {
+    right: -48px;
+    top: -55px;
+
+    animation:
+        floralTR
+        9s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+.floral--bl {
+    left: -48px;
+    bottom: -55px;
+
+    animation:
+        floralBL
+        9.5s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+.floral--br {
+    right: -48px;
+    bottom: -55px;
+
+    animation:
+        floralBR
+        8.5s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+.floral--soft {
+    opacity: 0.65;
+}
+
+
+/* gentle organic motion */
+
+@keyframes floralTL {
+
+    from {
+        transform:
+            rotate(-3deg)
+            translate3d(
+                0,
+                0,
+                0
+            );
+    }
+
+    to {
+        transform:
+            rotate(2deg)
+            translate3d(
+                6px,
+                9px,
+                0
+            );
+    }
+
+}
+
+
+@keyframes floralTR {
+
+    from {
+        transform:
+            scaleX(-1)
+            rotate(-2deg);
+    }
+
+    to {
+        transform:
+            scaleX(-1)
+            rotate(2deg)
+            translate3d(
+                -6px,
+                8px,
+                0
+            );
+    }
+
+}
+
+
+@keyframes floralBL {
+
+    from {
+        transform:
+            scaleY(-1)
+            rotate(-2deg);
+    }
+
+    to {
+        transform:
+            scaleY(-1)
+            rotate(2deg)
+            translate3d(
+                5px,
+                -7px,
+                0
+            );
+    }
+
+}
+
+
+@keyframes floralBR {
+
+    from {
+        transform:
+            rotate(178deg);
+    }
+
+    to {
+        transform:
+            rotate(182deg)
+            translate3d(
+                5px,
+                -8px,
+                0
+            );
+    }
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.section > *:not(.floral) {
+    position: relative;
+    z-index: 2;
+}
+
+.kicker {
+    max-width: 360px;
+
+    margin:
+        0 auto 20px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    letter-spacing: 0.1em;
+}
+
+.we {
+    font-size: 13px;
+
+    letter-spacing: 0.15em;
+}
+
+.couple h1 {
+    margin:
+        8px 0 -4px;
+
+    font:
+        400
+        clamp(
+            64px,
+            13vw,
+            96px
+        ) / 0.9
+        "Parisienne",
+        cursive;
+}
+
+.couple p {
+    margin: 0;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 14px;
+
+    letter-spacing: 0.42em;
+}
+
+.amp {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    width: 260px;
+
+    margin:
+        17px auto;
+}
+
+.amp span {
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(164, 124, 90, 0.40);
+}
+
+.amp b {
+    font:
+        400
+        35px
+        "Parisienne",
+        cursive;
+}
+
+.invite-copy {
+    margin:
+        28px 0;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+
+    letter-spacing: 0.07em;
+}
+
+
+/* =========================================================
+   DIVIDERS
+========================================================= */
+
+.rule {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width:
+        min(
+            330px,
+            85%
+        );
+
+    margin:
+        35px auto;
+
+    color:
+        #95613d;
+}
+
+.rule span {
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(157, 118, 87, 0.40);
+}
+
+.rule b {
+    display: inline-block;
+
+    font-size: 10px;
+
+    animation:
+        ornamentMove
+        7s
+        ease-in-out
+        infinite;
+}
+
+.rule--small {
+    margin:
+        26px auto;
+}
+
+
+@keyframes ornamentMove {
+
+    0%,
+    75%,
+    100% {
+        transform:
+            rotate(0deg);
+    }
+
+    86% {
+        transform:
+            rotate(90deg)
+            scale(1.15);
+    }
+
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.date-lockup {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    max-width: 390px;
+
+    margin: 0 auto;
+}
+
+.date-lockup div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.date-lockup small {
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 13px;
+
+    letter-spacing: 0.15em;
+}
+
+.date-lockup span {
+    padding-top: 8px;
+
+    border-top:
+        1px solid
+        rgba(152, 112, 77, 0.33);
+
+    font-size: 12px;
+
+    letter-spacing: 0.1em;
+}
+
+.date-lockup strong {
+    font:
+        400
+        72px / 1
+        "Italiana",
+        serif;
+}
+
+
+/* =========================================================
+   VENUE
+========================================================= */
+
+.time-script {
+    margin:
+        18px 0 6px;
+
+    font-style: italic;
+}
+
+.script-heading,
+.reception-script,
+.page-script,
+.closing-names {
+    font-family:
+        "Parisienne",
+        cursive;
+
+    font-weight: 400;
+}
+
+.script-heading {
+    margin:
+        4px 0;
+
+    font-size: 43px;
+}
+
+.address {
+    font-size: 14px;
+
+    line-height: 1.45;
+}
+
+.reception-script {
+    margin:
+        10px 0 4px;
+
+    font-size: 30px;
+}
+
+.hero-section h3 {
+    margin: 0;
+
+    font:
+        400
+        28px
+        "Italiana",
+        serif;
+}
+
+.caps {
+    margin:
+        5px 0 8px;
+
+    font-size: 11px;
+
+    letter-spacing: 0.24em;
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+.scroll-cue {
+    margin-top: 48px;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 9px;
+
+    letter-spacing: 0.18em;
+}
+
+.scroll-cue span {
+    display: block;
+
+    margin-top: 8px;
+
+    animation:
+        scrollBob
+        1.4s
+        infinite;
+}
+
+
+@keyframes scrollBob {
+
+    50% {
+        transform:
+            translateY(6px);
+    }
+
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.details-section {
+    background:
+        linear-gradient(
+            150deg,
+            #f5ead7,
+            #efdfc6
+        );
+}
+
+.page-script {
+    margin:
+        0 0 34px;
+
+    font-size: 72px;
+}
+
+.section-label {
+    margin:
+        25px 0 13px;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 17px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.12em;
+}
+
+.details-section > p {
+    max-width: 450px;
+
+    margin:
+        0 auto;
+
+    font-size: 17px;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   SWATCHES
+========================================================= */
+
+.swatches {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin:
+        28px auto;
+}
+
+.swatches i {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    background:
+        var(--sw);
+
+    box-shadow:
+        0 4px 8px
+        rgba(81, 56, 33, 0.13);
+}
+
+
+/* =========================================================
+   RSVP
+========================================================= */
+
+.rsvp-word {
+    font-size: 28px;
+}
+
+.blank {
+    display: inline-block;
+
+    width: 60px;
+
+    border-bottom:
+        1px solid
+        currentColor;
+}
+
+.bronze-button {
+    margin-top: 27px;
+
+    padding:
+        14px 28px;
+
+    border: 0;
+
+    border-radius: 99px;
+
+    background:
+        linear-gradient(
+            #a36b45,
+            #7d4729
+        );
+
+    color:
+        #fff7ec;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 0.14em;
+
+    box-shadow:
+        0 5px 12px
+        rgba(106, 64, 41, 0.20);
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ENTOURAGE
+========================================================= */
+
+.entourage-section {
+    background:
+        #f6ead7;
+}
+
+.role h4 {
+    margin:
+        0 0 8px;
+
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.06em;
+}
+
+.role p {
+    margin:
+        2px 0;
+
+    font-size: 13px;
+}
+
+.role small {
+    display: block;
+
+    margin:
+        -2px 0 8px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.05em;
+}
+
+.single {
+    margin:
+        28px auto;
+}
+
+.two-col,
+.three-col,
+.sponsors,
+.mini-grid {
+    display: grid;
+
+    gap: 28px;
+
+    max-width: 570px;
+
+    margin:
+        32px auto;
+}
+
+.two-col,
+.sponsors {
+    grid-template-columns:
+        1fr 1fr;
+}
+
+.three-col {
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+}
+
+.secondary-title {
+    margin-top: 45px;
+}
+
+.mini-grid {
+    grid-template-columns:
+        repeat(
+            2,
+            1fr
+        );
+
+    margin-top: 45px;
+}
+
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.closing-section {
+    min-height: 760px;
+
+    padding-top: 150px;
+
+    background:
+        linear-gradient(
+            #f4e8d4,
+            #ead5b8
+        );
+}
+
+.closing-copy {
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 11px;
+
+    letter-spacing: 0.12em;
+}
+
+.closing-names {
+    margin:
+        22px 0 5px;
+
+    font-size: 64px;
+}
+
+.closing-date {
+    font-family:
+        "Italiana",
+        serif;
+
+    font-size: 12px;
+
+    letter-spacing: 0.25em;
+}
+
+
+/* =========================================================
+   CLOSING ENVELOPE
+========================================================= */
+
+.closing-envelope {
+    position: absolute;
+    z-index: 3;
+
+    left: 50%;
+    bottom: -25px;
+
+    width:
+        min(
+            500px,
+            84%
+        );
+
+    height: 300px;
+
+    transform:
+        translateX(-50%);
+
+    filter:
+        drop-shadow(
+            0 -4px 18px
+            rgba(93, 65, 37, 0.17)
+        );
+}
+
+.closing-env-back {
+    position: absolute;
+
+    inset:
+        30px 0 0;
+
+    background:
+        #ddc5a3;
+}
+
+.closing-env-flap {
+    position: absolute;
+    z-index: 2;
+
+    inset:
+        30px 0 35%;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 100%,
+            100% 0
+        );
+
+    background:
+        #ead8bc;
+}
+
+.closing-env-left,
+.closing-env-right,
+.closing-env-bottom {
+    position: absolute;
+    z-index: 3;
+
+    inset:
+        30px 0 0;
+}
+
+.closing-env-left {
+    clip-path:
+        polygon(
+            0 0,
+            53% 56%,
+            0 100%
+        );
+
+    background:
+        #e4ceb0;
+}
+
+.closing-env-right {
+    clip-path:
+        polygon(
+            100% 0,
+            47% 56%,
+            100% 100%
+        );
+
+    background:
+        #d9bf9c;
+}
+
+.closing-env-bottom {
+    clip-path:
+        polygon(
+            0 100%,
+            50% 53%,
+            100% 100%
+        );
+
+    background:
+        #e8d3b5;
+}
+
+.closing-seal {
+    position: absolute;
+    z-index: 5;
+
+    left: 50%;
+    top: 47%;
+
+    width: 72px;
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #c18b5f,
+            #925936 55%,
+            #65391f
+        );
+
+    color:
+        #d9aa7f;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    box-shadow:
+        0 7px 15px
+        rgba(81, 48, 29, 0.34);
+}
+
+.closing-seal svg {
+    width: 100%;
+    height: 100%;
+
+    padding: 14px;
+}
+
+
+/* =========================================================
+   SECTION REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(26px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s
+        cubic-bezier(
+            0.2,
+            0.7,
+            0.2,
+            1
+        );
+}
+
+.reveal.is-revealed {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   CLICK FLOWER LAYER
+========================================================= */
+
+.bloom-layer {
+    position: fixed;
+    z-index: 3000;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+/*
+   IMPORTANT:
+   These are intentionally much larger than V3.
+*/
+
+.tap-bloom {
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    opacity: 0;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    transform-origin:
+        center;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+/* main flower */
+
+.tap-bloom.flower-main {
+    animation:
+        flowerMain
+        1.45s
+        cubic-bezier(
+            0.17,
+            0.7,
+            0.2,
+            1
+        )
+        forwards;
+}
+
+
+/* surrounding flowers */
+
+.tap-bloom.flower-side {
+    animation:
+        flowerSide
+        var(--life)
+        cubic-bezier(
+            0.17,
+            0.7,
+            0.2,
+            1
+        )
+        forwards;
+}
+
+
+/* =========================================================
+   LARGE CLICK BLOOM
+========================================================= */
+
+@keyframes flowerMain {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(0.12)
+            rotate(-15deg);
+    }
+
+    25% {
+        opacity: 0.95;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(1.1)
+            rotate(3deg);
+    }
+
+    70% {
+        opacity: 0.82;
+
+        transform:
+            translate(
+                -50%,
+                -58%
+            )
+            scale(1)
+            rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                -50%,
+                -82%
+            )
+            scale(0.82)
+            rotate(8deg);
+    }
+
+}
+
+
+@keyframes flowerSide {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(0.08)
+            rotate(
+                var(--start-rotation)
+            );
+    }
+
+    24% {
+        opacity: 0.9;
+
+        transform:
+            translate(
+                calc(
+                    -50% +
+                    var(--x-mid)
+                ),
+                calc(
+                    -50% +
+                    var(--y-mid)
+                )
+            )
+            scale(
+                var(--flower-scale)
+            )
+            rotate(
+                var(--mid-rotation)
+            );
+    }
+
+    72% {
+        opacity: 0.72;
+
+        transform:
+            translate(
+                calc(
+                    -50% +
+                    var(--x-end)
+                ),
+                calc(
+                    -50% +
+                    var(--y-end)
+                )
+            )
+            scale(
+                calc(
+                    var(--flower-scale) * 0.95
+                )
+            )
+            rotate(
+                var(--end-rotation)
+            );
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(
+                    -50% +
+                    var(--x-final)
+                ),
+                calc(
+                    -50% +
+                    var(--y-final)
+                )
+            )
+            scale(
+                calc(
+                    var(--flower-scale) * 0.7
+                )
+            )
+            rotate(
+                var(--final-rotation)
+            );
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+    max-width: 600px
+) {
+
+    .opening-heading {
+        top: 6vh;
+    }
+
+    .opening-heading p {
+        font-size: 14px;
+    }
+
+    .opening-heading h1 {
+        font-size: 20px;
+    }
+
+    .envelope-scene {
+        top: 57%;
+
+        width: 92vw;
+
+        height:
+            min(
+                360px,
+                72vw
+            );
+    }
+
+    .envelope {
+        height: 88%;
+    }
+
+    .wax-seal {
+        width: 76px;
+    }
+
+    .section {
+        padding:
+            90px 24px;
+    }
+
+    .hero-section {
+        padding-top: 110px;
+    }
+
+    .floral {
+        width: 220px;
+
+        opacity: 0.77;
+    }
+
+    .floral--tl {
+        left: -38px;
+        top: -42px;
+    }
+
+    .floral--tr {
+        right: -38px;
+        top: -42px;
+    }
+
+    .floral--bl {
+        left: -38px;
+        bottom: -42px;
+    }
+
+    .floral--br {
+        right: -38px;
+        bottom: -42px;
+    }
+
+    .couple h1 {
+        font-size:
+            clamp(
+                58px,
+                18vw,
+                78px
+            );
+    }
+
+    .page-script {
+        font-size: 60px;
+    }
+
+    .details-section > p {
+        font-size: 16px;
+    }
+
+    .swatches {
+        gap: 8px;
+    }
+
+    .swatches i {
+        width: 38px;
+        height: 38px;
+    }
+
+    .three-col,
+    .two-col,
+    .sponsors,
+    .mini-grid {
+        grid-template-columns: 1fr;
+
+        gap: 24px;
+    }
+
+    .sponsors {
+        gap: 4px;
+    }
+
+    .closing-names {
+        font-size: 49px;
+    }
+
+    .closing-section {
+        min-height: 680px;
+    }
+
+    /*
+        Click flowers stay visible on mobile.
+        They are still large enough to feel intentional.
+    */
+
+    .tap-bloom {
+        width: 82px;
+        height: 82px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (
+    max-width: 370px
+) {
+
+    .opening-heading h1 {
+        font-size: 18px;
+    }
+
+    .couple h1 {
+        font-size: 56px;
+    }
+
+    .date-lockup {
+        gap: 10px;
+    }
+
+    .date-lockup strong {
+        font-size: 60px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+}
+
+
+/* =========================================================
+   CLEAN CONSOLIDATED OVERRIDES
+   Replaces the old stacked patches.
+========================================================= */
+
+/* ---------- opening cover ---------- */
+.opening { isolation:isolate; }
+.opening::after { z-index:0; opacity:.09; }
+
+.opening-heading {
+    z-index:40;
+    top:6vh;
+    padding:0 22px;
+}
+.opening-heading::before,
+.opening-heading h1::after { content:none !important; display:none !important; }
+.opening-couple {
+    margin:0 auto 16px;
+    color:#603822;
+    font:400 clamp(50px,7vw,76px)/.92 "Parisienne",cursive;
+    text-align:center;
+}
+.opening-heading p {
+    color:#603822;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.30em;
+}
+.opening-heading span { width:85px; margin:14px auto; }
+.opening-heading h1 {
+    color:#76513a;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:.18em;
+}
+
+/* The flower is deliberately ABOVE the envelope visually, but never blocks clicks. */
+.opening-bg-floral,
+.opening-bg-floral * { pointer-events:none !important; }
+.opening-bg-floral--tl {
+    z-index:35 !important;
+    left:50% !important;
+    top:31% !important;
+    width:245px !important;
+    opacity:.96 !important;
+    transform-origin:55% 80%;
+    animation:openingBouquetSway 3.7s ease-in-out infinite alternate !important;
+}
+.opening-bg-floral--br {
+    z-index:2 !important;
+    right:-65px !important;
+    bottom:-65px !important;
+    width:175px !important;
+    opacity:.52 !important;
+}
+@keyframes openingBouquetSway {
+    from { transform:translateX(-78%) translateY(0) rotate(-8deg) scale(1); }
+    to   { transform:translateX(-74%) translateY(-15px) rotate(5deg) scale(1.04); }
+}
+
+.envelope-scene {
+    z-index:20 !important;
+    top:61%;
+    width:min(620px,86vw);
+    pointer-events:auto !important;
+}
+.envelope {
+    z-index:21 !important;
+    pointer-events:auto !important;
+    cursor:pointer;
+}
+.env-back,.env-flap,.env-front,.env-fold { pointer-events:none !important; }
+.wax-seal { z-index:26 !important; pointer-events:auto !important; }
+.open-label { z-index:40 !important; pointer-events:auto !important; }
+
+/* ---------- content layering ---------- */
+.section { isolation:isolate; }
+.section .floral { z-index:1; pointer-events:none; }
+.section > *:not(.floral):not(.paper-grain) { position:relative; z-index:5; }
+.hero-section .kicker { max-width:410px; }
+
+/* stronger visible side movement */
+.hero-section .floral--tl,
+.entourage-section .floral--tl { left:-65px; top:35px; animation:livingLeft 4.1s ease-in-out infinite alternate; }
+.hero-section .floral--br,
+.entourage-section .floral--br { right:-65px; bottom:45px; animation:livingRight 4.4s ease-in-out infinite alternate; }
+.details-section .floral--tr { right:-65px; top:45px; animation:livingRight 4.5s ease-in-out infinite alternate; }
+.details-section .floral--bl { left:-65px; bottom:45px; animation:livingLeft 4.7s ease-in-out infinite alternate; }
+@keyframes livingLeft {
+    from { transform:translate3d(-8px,0,0) rotate(-7deg) scale(1); }
+    to { transform:translate3d(15px,18px,0) rotate(7deg) scale(1.045); }
+}
+@keyframes livingRight {
+    from { transform:rotate(174deg) translate3d(-5px,0,0) scale(1); }
+    to { transform:rotate(187deg) translate3d(12px,-18px,0) scale(1.045); }
+}
+
+/* ---------- closing ---------- */
+.closing-section {
+    min-height:920px;
+    padding:105px 40px 390px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#f7edda 0%,#f3e4cd 100%);
+}
+.closing-copy {
+    max-width:390px;
+    margin:0 auto 24px;
+    color:#65402d;
+    font-family:"Italiana",serif;
+    font-size:12px;
+    font-weight:600;
+    line-height:1.55;
+    letter-spacing:.11em;
+}
+.closing-names {
+    max-width:620px;
+    margin:0 auto 28px;
+    color:#60351f;
+    font:400 clamp(58px,9vw,80px)/.94 "Parisienne",cursive;
+}
+.closing-date {
+    margin:0 auto 55px;
+    color:#60351f;
+    font-family:"Italiana",serif;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.25em;
+}
+.closing-envelope {
+    position:absolute !important;
+    z-index:10 !important;
+    left:50% !important;
+    right:auto !important;
+    bottom:55px !important;
+    width:min(500px,80%) !important;
+    height:300px;
+    margin:0 !important;
+    padding:0;
+    border:0;
+    background:transparent;
+    transform:translateX(-50%) !important;
+    cursor:pointer;
+    appearance:none;
+}
+.closing-envelope::before {
+    content:"TAP TO CLOSE INVITATION";
+    position:absolute;
+    z-index:40;
+    left:50%;
+    top:-52px;
+    transform:translateX(-50%);
+    width:max-content;
+    color:#65402d;
+    font-family:"Italiana",serif;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.15em;
+    pointer-events:none;
+}
+.closing-env-back,
+.closing-env-flap,
+.closing-env-left,
+.closing-env-right,
+.closing-env-bottom,
+.closing-seal { position:absolute; pointer-events:none; }
+.closing-env-back { inset:0; background:#e6d4b9; box-shadow:0 22px 30px rgba(66,42,25,.18); }
+.closing-env-flap { z-index:3; inset:0 0 32%; clip-path:polygon(0 0,50% 100%,100% 0); background:linear-gradient(155deg,#f0e2cc,#d6bb95); }
+.closing-env-left { z-index:4; inset:0; clip-path:polygon(0 0,53% 57%,0 100%); background:#e2ceb0; }
+.closing-env-right { z-index:4; inset:0; clip-path:polygon(100% 0,47% 57%,100% 100%); background:#d9c19f; }
+.closing-env-bottom { z-index:5; inset:0; clip-path:polygon(0 100%,50% 54%,100% 100%); background:linear-gradient(#e7d4b8,#d8bd98); }
+.closing-seal {
+    z-index:8;
+    left:50%; top:48%; width:86px; aspect-ratio:1;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    display:grid; place-items:center;
+    color:#d9aa7f;
+    background:radial-gradient(circle at 35% 28%,#c18b5f,#925936 55%,#65391f);
+    box-shadow:0 8px 16px rgba(107,67,44,.34),inset 0 0 0 4px rgba(93,52,31,.20);
+}
+.closing-seal svg { width:62%; height:62%; }
+
+/* Closing bouquet is in FRONT of the envelope and pulled inside the paper. */
+.closing-section .floral--br {
+    z-index:30 !important;
+    width:225px !important;
+    right:-5px !important;
+    bottom:235px !important;
+    opacity:.98 !important;
+    animation:closingBouquetSway 4s ease-in-out infinite alternate !important;
+}
+.closing-section .floral--tl {
+    z-index:2 !important;
+    width:235px !important;
+    left:-65px !important;
+    top:25px !important;
+    opacity:.72 !important;
+}
+@keyframes closingBouquetSway {
+    from { transform:rotate(174deg) translate3d(0,0,0) scale(1); }
+    to { transform:rotate(187deg) translate3d(8px,-16px,0) scale(1.04); }
+}
+
+.invitation.is-closing { animation:invitationClose .6s ease forwards; }
+@keyframes invitationClose { to { opacity:0; transform:translateY(28px) scale(.985); } }
+
+/* ---------- music ---------- */
+.music-button {
+    position:fixed;
+    z-index:9998;
+    right:18px;
+    bottom:18px;
+    display:none;
+    width:48px;
+    height:48px;
+    padding:0;
+    border:1px solid rgba(96,53,31,.25);
+    border-radius:50%;
+    background:rgba(247,237,218,.94);
+    color:#60351f;
+    box-shadow:0 8px 22px rgba(70,45,28,.16);
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+body.invitation-open .music-button { display:flex; }
+.music-text { display:none; }
+.music-icon { font-size:20px; line-height:1; }
+.music-button.is-playing .music-icon { animation:musicPulse 1.2s ease-in-out infinite alternate; }
+@keyframes musicPulse { to { transform:scale(1.16) rotate(6deg); } }
+
+/* ---------- click/tap botanical blooms ---------- */
+.bloom-layer { position:fixed; z-index:10000; inset:0; pointer-events:none; overflow:hidden; }
+.tap-bloom { position:absolute; pointer-events:none; transform-origin:center; animation:tapBloom 1.8s cubic-bezier(.2,.72,.2,1) forwards; }
+.tap-bloom svg { display:block; width:100%; height:100%; overflow:visible; }
+.bloom-lily { width:145px; height:145px; }
+.bloom-sprig { width:125px; height:190px; }
+.bloom-bouquet { width:190px; height:170px; }
+.bloom-bouquet svg { position:absolute; }
+.bouquet-sprig { width:105px !important; height:170px !important; left:42px; top:0; transform:rotate(15deg); }
+.bouquet-lily { width:105px !important; height:105px !important; }
+.bouquet-lily--one { left:0; top:46px; transform:rotate(-14deg); }
+.bouquet-lily--two { right:0; top:25px; transform:rotate(18deg) scale(.88); }
+@keyframes tapBloom {
+    0% { opacity:0; transform:translate(-50%,-50%) scale(.12) rotate(-10deg); }
+    25% { opacity:.96; transform:translate(-50%,-50%) scale(calc(var(--bloom-scale,1) * 1.06)) rotate(2deg); }
+    72% { opacity:.76; transform:translate(-50%,-62%) scale(var(--bloom-scale,1)) rotate(0); }
+    100% { opacity:0; transform:translate(-50%,-88%) scale(calc(var(--bloom-scale,1) * .82)) rotate(8deg); }
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:600px) {
+    .opening-heading { top:5.5vh; }
+    .opening-couple { max-width:320px; font-size:clamp(46px,13vw,62px); margin-bottom:15px; }
+    .opening-heading p { font-size:12px; }
+    .opening-heading h1 { font-size:8px; }
+    .opening-bg-floral--tl { top:31.5% !important; width:205px !important; }
+    .opening-bg-floral--br { width:135px !important; }
+    .envelope-scene { top:61%; width:88vw; height:66vw; }
+    .envelope { height:82%; }
+
+    .section { padding-left:30px; padding-right:30px; }
+    .hero-section .floral--tl { left:-100px; top:25px; width:220px; }
+    .hero-section .kicker { max-width:285px; }
+
+    .closing-section { min-height:790px; padding:90px 24px 330px; }
+    .closing-copy { max-width:300px; font-size:10px; }
+    .closing-names { max-width:330px; font-size:clamp(55px,15vw,70px); }
+    .closing-date { font-size:13px; margin-bottom:50px; }
+    .closing-envelope { width:88% !important; height:245px; bottom:38px !important; }
+    .closing-envelope::before { top:-48px; font-size:9px; }
+    .closing-section .floral--br { width:185px !important; right:-2px !important; bottom:195px !important; }
+    .closing-section .floral--tl { width:195px !important; left:-75px !important; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .opening-bg-floral--tl,
+    .floral,
+    .music-button.is-playing .music-icon { animation:none !important; }
+}
+
+/* =========================================================
+   DETAILS FLORALS — DIAGONAL ALTERNATING LAYOUT
+
+   LEFT  = higher
+   RIGHT = lower
+========================================================= */
+
+/* First flower: move to upper LEFT */
+.details-section .floral--tr {
+    left: -115px !important;
+    right: auto !important;
+
+    top: 210px !important;
+    bottom: auto !important;
+
+    width: 225px !important;
+
+    /*
+       Flip/rotate it so it grows inward naturally
+       from the left edge.
+    */
+    animation:
+        detailsFlowerLeft
+        4.6s
+        ease-in-out
+        infinite
+        alternate !important;
+}
+
+
+/* Second flower: move to lower RIGHT */
+.details-section .floral--bl {
+    left: auto !important;
+    right: -120px !important;
+
+    top: auto !important;
+    bottom: 70px !important;
+
+    width: 225px !important;
+
+    animation:
+        detailsFlowerRight
+        4.8s
+        ease-in-out
+        infinite
+        alternate !important;
+}
+
+
+/* =========================================================
+   MORE NOTICEABLE MOVEMENT
+========================================================= */
+
+@keyframes detailsFlowerLeft {
+
+    0% {
+        transform:
+            scaleX(-1)
+            rotate(-5deg)
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            scaleX(-1)
+            rotate(2deg)
+            translate3d(-10px, 10px, 0)
+            scale(1.035);
+    }
+
+    100% {
+        transform:
+            scaleX(-1)
+            rotate(6deg)
+            translate3d(-4px, 18px, 0);
+    }
+}
+
+
+@keyframes detailsFlowerRight {
+
+    0% {
+        transform:
+            rotate(178deg)
+            translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform:
+            rotate(184deg)
+            translate3d(-10px, -10px, 0)
+            scale(1.035);
+    }
+
+    100% {
+        transform:
+            rotate(188deg)
+            translate3d(4px, -17px, 0);
+    }
+}
+
+
+/* Text always remains above the decorations */
+
+.details-section > *:not(.floral) {
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* LEFT — between Attire and Gift areas */
+    .details-section .floral--tr {
+        left: -130px !important;
+        right: auto !important;
+
+        top: 230px !important;
+
+        width: 220px !important;
+    }
+
+
+    /* RIGHT — around lower RSVP area */
+    .details-section .floral--bl {
+        left: auto !important;
+        right: -130px !important;
+
+        top: auto !important;
+        bottom: 35px !important;
+
+        width: 220px !important;
+    }
+
+}
