@@ -2736,3 +2736,110 @@ body { background:#f7eee7; color:var(--ink); }
         color: var(--ink);
     }
 }
+
+/* ==========================================
+   GLOBAL TEXT VISIBILITY FIX
+   Desktop and Mobile
+========================================== */
+
+:root {
+    --ink: #422e25;
+    --muted: #5e483b;
+    --bronze: #855336;
+}
+
+/* Stronger contrast throughout the invitation */
+body,
+.paper,
+.section {
+    color: var(--ink);
+}
+
+/* Readable paragraph text */
+.section p,
+.section .address,
+.section small {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+/* Uppercase labels and small decorative text */
+.kicker,
+.caps,
+.section-label,
+.role h4,
+.role small,
+.closing-copy,
+.closing-date,
+.opening-heading h1,
+.opening-heading p {
+    color: #543a2d !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+}
+
+/* Improve thin decorative font rendering */
+.opening-heading h1,
+.opening-heading p,
+.section-label,
+.caps,
+.closing-copy,
+.closing-date {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    letter-spacing: 0.12em;
+}
+
+/* Opening screen */
+.opening-couple {
+    color: #583b2d;
+    opacity: 1;
+}
+
+/* Closing section */
+.closing-copy {
+    font-size: 15px !important;
+    line-height: 1.5;
+}
+
+.closing-date {
+    font-size: 17px !important;
+}
+
+/* Guest reminder */
+.guest-reminder,
+.guest-reminder p,
+.guest-note,
+.guest-note p {
+    color: #49372e !important;
+    font-weight: 500 !important;
+    line-height: 1.7;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .kicker,
+    .caps,
+    .section-label,
+    .role h4,
+    .role small,
+    .closing-copy,
+    .closing-date,
+    .opening-heading h1,
+    .opening-heading p {
+        font-size: max(13px, 3.5vw) !important;
+        letter-spacing: 0.08em !important;
+        line-height: 1.5;
+    }
+
+    .section p,
+    .section .address {
+        font-size: max(17px, 4.3vw);
+        line-height: 1.6;
+    }
+
+    .guest-reminder p,
+    .guest-note p {
+        font-size: 17px !important;
+        line-height: 1.7;
+    }
+}
