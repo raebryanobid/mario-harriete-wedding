@@ -2602,3 +2602,60 @@ body.rsvp-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .rsvp-modal, .rsvp-card, .rsvp-choice span { transition:none; }
 }
+
+/* =========================================================
+   OCTOBER 2026 REFINEMENTS — LIGHTER, CLEARER & MOBILE READY
+   Overrides preserve the existing animations and RSVP layout.
+========================================================= */
+:root { --cream:#fffbf5; --cream-2:#f6eae0; --ink:#49382e; --muted:#67564c; --bronze:#916d56; --olive:#64674d; --shadow:rgba(62,44,34,.14); }
+body { background:#f7eee7; color:var(--ink); }
+.opening { background:radial-gradient(circle at 50% 42%,#fffdf9 0%,#faf2e9 55%,#f0e2d5 100%); }
+.invitation { background:linear-gradient(180deg,#f8f1e9,#eee2d6); }
+.paper { background:#fffaf4; box-shadow:0 16px 48px rgba(72,50,35,.16); }
+.hero-section, .details-section, .entourage-section, .closing-section { background:#fffaf4; color:var(--ink); }
+.details-section { background:#fffdf9; }
+.entourage-section { background:#fbf6f0; }
+.closing-section { background:#fffaf4; }
+.paper-grain { opacity:.09; }
+.floral, .opening-bg-floral { opacity:.57; }
+.floral--soft { opacity:.4; }
+.section p, .section small, .section h4, .section-label, .section .caps, .section .address, .section .kicker, .section .role p, .section .role small { color:#49382e; }
+.section .address, .details-section > p { font-size:clamp(16px,2.5vw,19px); line-height:1.55; }
+.kicker, .section-label, .role h4, .role small, .caps, .opening-heading h1, .opening-heading p, .open-label { letter-spacing:.09em; }
+.kicker, .role h4, .section-label { font-size:clamp(12px,2vw,15px); line-height:1.55; }
+.role p { font-size:clamp(15px,2.5vw,17px); line-height:1.5; }
+.role small { font-size:12px; line-height:1.5; }
+.open-label { font-size:13px; font-weight:600; }
+.rsvp-eyebrow, .rsvp-field > span, .rsvp-choice span, .rsvp-submit, .rsvp-deadline { font-size:max(12px,1em); }
+.rsvp-field > span { font-size:13px; line-height:1.45; }
+.rsvp-choice span { font-size:13px; letter-spacing:.02em; }
+.rsvp-submit { font-size:13px; }
+.rsvp-card { background:linear-gradient(145deg,#fffdf8,#f8eee4); }
+.rsvp-field textarea::placeholder { color:#77665b; }
+.ceremony-times { display:flex; justify-content:center; flex-wrap:wrap; gap:12px 24px; margin:18px auto 22px; }
+.ceremony-times p { margin:0; display:flex; flex-direction:column; gap:4px; }
+.ceremony-times strong { font:600 12px/1.3 'Cormorant Garamond',Georgia,serif; letter-spacing:.15em; }
+.ceremony-times span { font:600 19px/1.3 'Cormorant Garamond',Georgia,serif; }
+.sponsors.sponsors--paired { display:flex; flex-direction:column; align-items:center; gap:13px; max-width:100%; margin:26px auto 34px; }
+.sponsor-pair { display:flex; align-items:baseline; justify-content:center; flex-wrap:wrap; column-gap:7px; row-gap:2px; width:100%; margin:0 !important; font-size:clamp(15px,2.4vw,18px) !important; line-height:1.55; }
+.sponsor-amp { color:#92765d; font-style:italic; }
+.venue-map { margin:26px auto 10px; padding:18px 16px; max-width:280px; border:1px solid #e5d6c9; background:rgba(255,255,255,.68); }
+.venue-map-title { margin:0 0 10px; font-size:12px !important; font-weight:600; letter-spacing:.14em; }
+.venue-map img { display:block; width:150px; height:150px; margin:auto; background:white; border:6px solid white; }
+.venue-map p:last-child { margin:10px 0 0; font-size:14px; line-height:1.4; }
+.venue-map a { color:#74503d; text-underline-offset:3px; }
+.guest-reminder { max-width:540px; margin:0 auto 48px; padding:28px 22px; background:#fffdf9; border:1px solid #e6d6c8; }
+.guest-reminder h3 { margin:0 0 18px; font:400 clamp(32px,6vw,44px)/1.2 'Parisienne',cursive; color:#775845; }
+.guest-reminder p { font-size:clamp(15px,2.6vw,18px); line-height:1.65; margin:0 0 14px; }
+.guest-reminder p:last-child { margin-bottom:0; }
+.guest-reminder span { color:#a77f70; font-size:23px; }
+@media(max-width:600px) {
+  .section { padding-left:24px; padding-right:24px; }
+  .sponsors.sponsors--paired { gap:17px; }
+  .sponsor-pair { gap:3px 7px; }
+  .closing-section { min-height:0; padding-top:76px; padding-bottom:330px; }
+  .guest-reminder { padding:24px 17px; margin-bottom:42px; }
+  .ceremony-times { gap:12px 18px; }
+  .opening-heading h1 { font-size:clamp(17px,4.2vw,25px); }
+  .opening-heading p { letter-spacing:.16em; }
+}
