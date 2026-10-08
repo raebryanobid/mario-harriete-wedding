@@ -2659,3 +2659,80 @@ body { background:#f7eee7; color:var(--ink); }
   .opening-heading h1 { font-size:clamp(17px,4.2vw,25px); }
   .opening-heading p { letter-spacing:.16em; }
 }
+
+/* ==========================================
+   MOBILE READABILITY IMPROVEMENTS
+========================================== */
+
+:root {
+    --ink: #49372e;
+    --muted: #665247;
+}
+
+/* Make important text easier to read */
+.section {
+    color: var(--ink);
+}
+
+.section p,
+.section .address {
+    font-weight: 500;
+}
+
+/* Venue names */
+.hero-section h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(32px, 8vw, 44px);
+    letter-spacing: 0.015em;
+    line-height: 1.2;
+}
+
+/* Keep the hyphen clearly visible */
+.hero-section h3 .venue-hyphen {
+    font-family: Georgia, serif;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+/* Small uppercase labels */
+.section-label,
+.caps,
+.role h4 {
+    font-weight: 700;
+    letter-spacing: 0.09em;
+}
+
+/* Body text */
+.details-section p,
+.hero-section .address,
+.role p {
+    font-size: clamp(17px, 4.2vw, 20px);
+    line-height: 1.55;
+}
+
+/* RSVP text */
+.details-section .blank {
+    border-bottom-color: var(--ink);
+}
+
+@media (max-width: 600px) {
+    .hero-section h3 {
+        font-size: 36px;
+    }
+
+    .section-label,
+    .caps {
+        font-size: 13px;
+    }
+
+    .details-section p,
+    .hero-section .address {
+        font-size: 18px;
+    }
+
+    .hero-section .date-lockup,
+    .hero-section .ceremony-times {
+        color: var(--ink);
+    }
+}
