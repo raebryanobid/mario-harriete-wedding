@@ -2843,3 +2843,67 @@ body,
         line-height: 1.7;
     }
 }
+
+/* Principal sponsors displayed as couples */
+
+.sponsors--paired {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.sponsors--paired p {
+    margin: 0;
+    font-size: clamp(15px, 3.8vw, 19px);
+    font-weight: 600;
+    line-height: 1.5;
+    color: #49372e;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+/* Reserved seats */
+
+#reservedSeats {
+    display: inline-block;
+    min-width: 1.5em;
+    color: #49372e;
+    font-weight: 700;
+}
+
+/* RSVP reminder and personalized seat allocation */
+.rsvp-card .guest-reminder {
+    max-width: 100%;
+    margin: 18px auto 16px;
+    padding: 20px 18px;
+    background: #fffaf3;
+    border: 1px solid #d9bda8;
+    border-radius: 4px;
+    color: #49372e;
+}
+.rsvp-card .guest-reminder h3 {
+    margin-bottom: 10px;
+    font-size: clamp(29px, 6vw, 36px);
+    color: #694b39;
+}
+.rsvp-card .guest-reminder p {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(17px, 4vw, 19px);
+    line-height: 1.5;
+    font-weight: 600;
+    color: #49372e !important;
+    opacity: 1;
+}
+.rsvp-seat-limit-note {
+    margin: 6px 0 12px;
+    color: #5b3e2e;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+.rsvp-seat-limit-note[hidden] { display: none; }
+@media (max-width: 600px) {
+    .rsvp-card .guest-reminder { padding: 16px 13px; }
+    .rsvp-card .guest-reminder p { font-size: 17px !important; }
+}

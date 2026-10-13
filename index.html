@@ -173,7 +173,7 @@
       <h2 class="page-script">Details</h2>
 
       <h3 class="section-label">ATTIRE GUIDE</h3>
-      <p>We would love to see you in your best and most comfortable <strong>FORMAL ATTIRE</strong> that suit in our motif.</p>
+      <p>We would love to see you in your best and most comfortable <strong>FORMAL ATTIRE</strong> that complements our wedding motif.</p>
       <div class="swatches" aria-label="Wedding motif colors">
         <i style="--sw:#efe0c4"></i><i style="--sw:#e1c18e"></i><i style="--sw:#cda36e"></i>
         <i style="--sw:#aa8255"></i><i style="--sw:#7a6047"></i><i style="--sw:#5f5748"></i>
@@ -185,7 +185,12 @@
 
       <div class="rule"><span></span><b>✦</b><span></span></div>
       <h3 class="section-label rsvp-word">RSVP</h3>
-      <p>We have reserved <span class="blank"></span> seat(s) in your honor.</p>
+      <p>
+        We have reserved
+        <strong id="reservedSeats" aria-live="polite">____</strong>
+        <span id="reservedSeatWord">seat(s)</span>
+        in your honor.
+      </p>
       <p>The favor of your reply is requested on or before <strong>November 5, 2026.</strong></p>
       <button id="rsvpButton" class="bronze-button">RESPOND TO RSVP <span>→</span></button>
     </section>
@@ -207,17 +212,18 @@
       <div class="role single">
         <h4>PRINCIPAL SPONSORS</h4>
         <div class="sponsors sponsors--paired">
-          <p class="sponsor-pair"><span>Mr. Ronald Magracia</span><span class="sponsor-amp">&amp;</span><span>Mrs. Marietta Magracia</span></p>
-          <p class="sponsor-pair"><span>Mr. Rexsel Ongkengco</span><span class="sponsor-amp">&amp;</span><span>Mrs. Cecille Ongkengco</span></p>
-          <p class="sponsor-pair"><span>Mr. Edgar Flores</span><span class="sponsor-amp">&amp;</span><span>Mrs. Grace Flores</span></p>
-          <p class="sponsor-pair"><span>Mr. Pilot Palatones</span><span class="sponsor-amp">&amp;</span><span>Mrs. Norma Palatones</span></p>
-          <p class="sponsor-pair"><span>Mr. Juanito Dordines</span><span class="sponsor-amp">&amp;</span><span>Mrs. Everleigh Anthony</span></p>
+          <p>MR. RONALD MAGRACIA &amp; MRS. MARIETTA MAGRACIA</p>
+          <p>MR. REXSEL ONGKENGCO &amp; MRS. CECILLE ONGKENGCO</p>
+          <p>MR. EDGAR FLORES &amp; MRS. GRACE FLORES</p>
+          <p>MR. DIOSDADO PALATONES &amp; MRS. NORMA PALATONES</p>
+          <p>MR. JUANITO DORDINES &amp; MRS. MIGUELA SAGE</p>
+          <p>MR. MAXIMO REYES &amp; MRS. NORLY GALVAN</p>
         </div>
       </div>
 
       <div class="rule"><span></span><b>✦</b><span></span></div>
       <div class="two-col">
-        <div class="role"><h4>BEST MAN</h4><p>ZYKEL LUIGIE FLOR</p></div>
+        <div class="role"><h4>BEST MAN</h4><p>ZYREL LUIGIE FLOR</p></div>
         <div class="role"><h4>MAID OF HONOR</h4><p>REGINE PALATONES</p></div>
       </div>
 
@@ -245,7 +251,6 @@
     <section class="section closing-section reveal">
       <svg class="floral floral--tl" viewBox="0 0 430 430"><use href="#floral-corner"/></svg>
       <svg class="floral floral--br" viewBox="0 0 430 430"><use href="#floral-corner"/></svg>
-      <div class="guest-reminder"><h3>A Gentle Reminder</h3><p>As we celebrate our special day with an intimate gathering, we kindly ask that only the number of guests indicated on your invitation attend.</p><p>Please note that our wedding will be an adult-only celebration. While we would love to see your little ones, we kindly request that only children specifically named on the invitation, as well as children who are immediate family members, attend.</p><p>Thank you for your understanding and for being part of our special day. <span aria-label="With love">♡</span></p></div>
       <p class="closing-copy">WE CAN’T WAIT TO CELEBRATE WITH YOU.</p>
       <h2 class="closing-names">Mario & Harriete</h2>
       <p class="closing-date">12 · 12 · 2026</p>
@@ -292,6 +297,7 @@
         </label>
 
         <div id="attendingFields" class="rsvp-attending-fields">
+          <p id="rsvpSeatLimitNote" class="rsvp-seat-limit-note" hidden></p>
           <label class="rsvp-field rsvp-number-field">
             <span>NUMBER ATTENDING</span>
             <div class="rsvp-stepper">
@@ -311,6 +317,8 @@
           <span>A MESSAGE FOR THE COUPLE</span>
           <textarea name="message" rows="3" maxlength="500" placeholder="Optional"></textarea>
         </label>
+
+        <div class="guest-reminder"><h3>A Gentle Reminder</h3><p>As we celebrate our special day with an intimate gathering, we kindly ask that only the number of guests indicated on your invitation attend.</p><p>Please note that our wedding will be an adult-only celebration. While we would love to see your little ones, we kindly request that only children specifically named on the invitation, as well as children who are immediate family members, attend.</p><p>Thank you for your understanding and for being part of our special day. <span aria-label="With love">♡</span></p></div>
 
         <p id="rsvpError" class="rsvp-error" role="alert"></p>
         <button id="rsvpSubmit" class="rsvp-submit" type="submit">SEND MY RSVP <span>→</span></button>

@@ -1084,7 +1084,7 @@ rsvpPlus?.addEventListener(
         rsvpCount.value =
             String(
                 Math.min(
-                    20,
+                    personalizedSeatLimit || 20,
                     Number(
                         rsvpCount.value ||
                         1
@@ -1171,6 +1171,13 @@ rsvpForm?.addEventListener(
             attendance ===
             "Joyfully Accepts";
 
+
+        if (accepts && personalizedSeatLimit &&
+            (Number(rsvpCount?.value) < 1 || Number(rsvpCount?.value) > personalizedSeatLimit)) {
+            if (rsvpError) rsvpError.textContent =
+                `Please select no more than ${personalizedSeatLimit} reserved ${personalizedSeatLimit === 1 ? "seat" : "seats"}.`;
+            return;
+        }
 
         const payload = {
 
@@ -1298,3 +1305,38 @@ rsvpForm?.addEventListener(
         }
     }
 );
+
+/* ==========================================
+   PERSONALIZED RESERVED SEATS
+========================================== */
+let personalizedSeatLimit = null;
+
+(function initializeReservedSeats() {
+    const params = new URLSearchParams(window.location.search);
+    const rawSeats = params.get("seats");
+
+    const reservedSeats = document.getElementById("reservedSeats");
+    const reservedSeatWord = document.getElementById("reservedSeatWord");
+
+    if (!reservedSeats || !reservedSeatWord) return;
+
+    // Only accept whole numbers from 1 to 20.
+    if (!rawSeats || !/^\d+$/.test(rawSeats)) return;
+
+    const seats = Number(rawSeats);
+
+    if (!Number.isSafeInteger(seats) || seats < 1 || seats > 20) return;
+
+    personalizedSeatLimit = seats;
+    if (rsvpCount) {
+        rsvpCount.max = String(seats);
+        rsvpCount.value = "1";
+    }
+    const seatNote = document.getElementById("rsvpSeatLimitNote");
+    if (seatNote) {
+        seatNote.hidden = false;
+        seatNote.textContent = `Your invitation reserves ${seats} ${seats === 1 ? "seat" : "seats"}. Please select up to this number when responding.`;
+    }
+    reservedSeats.textContent = String(seats);
+    reservedSeatWord.textContent = seats === 1 ? "seat" : "seats";
+})();
