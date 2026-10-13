@@ -2976,3 +2976,41 @@ body,
         letter-spacing: -0.02em;
     }
 }
+
+/* PRINCIPAL SPONSORS — READABLE SINGLE-LINE NAMES */
+
+.sponsors--paired {
+    width: 100%;
+    max-width: none;
+    gap: 18px;
+}
+
+.sponsors--paired p {
+    display: block !important;
+    width: 100%;
+    margin: 0;
+    white-space: nowrap;
+    text-align: center;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .entourage-section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .sponsors--paired {
+        gap: 17px;
+    }
+
+    .sponsors--paired p {
+        font-size: clamp(13px, 3.5vw, 16px) !important;
+        letter-spacing: -0.035em;
+    }
+}
