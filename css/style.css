@@ -2907,3 +2907,27 @@ body,
     .rsvp-card .guest-reminder { padding: 16px 13px; }
     .rsvp-card .guest-reminder p { font-size: 17px !important; }
 }
+
+/* Prevent accidental text selection on the invitation */
+.opening,
+.invitation,
+.rsvp-modal {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep RSVP fields usable */
+.rsvp-modal input,
+.rsvp-modal textarea,
+.rsvp-modal select {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+/* Keep names readable without awkward line breaks */
+.keep-name-together {
+    white-space: nowrap;
+    font-size: clamp(13px, 2.5vw, 19px);
+    letter-spacing: 0;
+}
