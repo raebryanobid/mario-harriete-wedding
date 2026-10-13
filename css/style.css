@@ -2931,3 +2931,48 @@ body,
     font-size: clamp(13px, 2.5vw, 19px);
     letter-spacing: 0;
 }
+
+/* ==========================================
+   PRINCIPAL SPONSORS — SINGLE LINE
+========================================== */
+
+.sponsors--paired {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+}
+
+.sponsors--paired p {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    text-align: center;
+
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.5;
+
+    color: #49372e;
+}
+
+/* Override the previous span and ampersand layout */
+.sponsors--paired p span,
+.sponsors--paired p b {
+    display: inline;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .sponsors--paired p {
+        display: block;
+        font-size: clamp(9px, 2.55vw, 13px);
+        letter-spacing: -0.02em;
+    }
+}
